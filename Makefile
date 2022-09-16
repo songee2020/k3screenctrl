@@ -5,8 +5,8 @@ PKG_VERSION:=0.10
 PKG_RELEASE:=4
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/songee2020/k3screenctrl.git
-PKG_SOURCE_VERSION:=e21cb07a83ba98b7b89150fcbc43dee8f117b572
+PKG_SOURCE_URL:=https://github.com/updateing/k3screenctrl.git
+PKG_SOURCE_VERSION:=dd05ce9a5cb0cb6cebfc6b3b5823c7f6d75796ff
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_SOURCE_VERSION)
 PKG_SOURCE:=$(PKG_SOURCE_SUBDIR).tar.xz
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_SOURCE_SUBDIR)
@@ -35,12 +35,12 @@ define Package/k3screenctrl/install
 	$(INSTALL_DIR) $(1)/etc/init.d
 
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/k3screenctrl $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/k3screenctrl/wan.sh $(1)/lib/k3screenctrl/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/k3screenctrl/wifi.sh $(1)/lib/k3screenctrl/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/k3screenctrl/port.sh $(1)/lib/k3screenctrl/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/k3screenctrl/basic.sh $(1)/lib/k3screenctrl/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/k3screenctrl/host.sh $(1)/lib/k3screenctrl/
-
+	
+	$(INSTALL_BIN) ./files/wan.sh $(1)/lib/k3screenctrl/
+	$(INSTALL_BIN) ./files/wifi.sh $(1)/lib/k3screenctrl/
+	$(INSTALL_BIN) ./files/port.sh $(1)/lib/k3screenctrl/
+	$(INSTALL_BIN) ./files/basic.sh $(1)/lib/k3screenctrl/
+	$(INSTALL_BIN) ./files/host.sh $(1)/lib/k3screenctrl/
 	$(INSTALL_BIN) ./files/k3screenctrl.init $(1)/etc/init.d/k3screenctrl
 endef
 
